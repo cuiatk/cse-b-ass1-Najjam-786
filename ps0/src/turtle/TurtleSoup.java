@@ -19,6 +19,28 @@ public class TurtleSoup
  * @param sideLength length of each side
     
  */
+    public static void drawSquare(Turtle turtle, int sideLength) {
+    	 for(int x = 0; x < 4; x++)
+  
+  	 {
+             turtle.forward(sideLength);
+             turtle.turn(90.0);
+         }
+    }
+
+   
+ /**
+     * Determine inside angles of a regular polygon.
+   
+  * 
+     * There is a simple formula for calculating the inside angles of a polygon;
+    
+ * you should derive it and use it here.
+     * 
+     * @param sides number of sides, where sides must be > 2
+  
+   * @return angle in degrees, where 0 <= angle < 360
+     */
     public static double calculateRegularPolygonAngle(int sides) 
   
   {
@@ -156,19 +178,50 @@ use only right-hand turns to draw.
     
  * @param turtle the turtle context
      */
+    public static void drawPersonalArt(Turtle turtle) {
+    	
+int sides = 5;
+        int sideLength = 100;
+        for(int x = sides; x > 0; x--)
+        {
+            
+for(int y = 10; y>0; y-=8)
+            {
+                drawRegularPolygon(turtle, 15, y);
+            }
+       
+     drawRegularPolygon(turtle, 34, 75);
+            turtle.forward(sideLength);
+          
+  turtle.turn(270.0 - calculateRegularPolygonAngle(sides));
+        }
+    }
 
- 
+    /**
+  
+   * Main method.
+     * 
+     * This is the method that runs when you run "java TurtleSoup".
+     * 
+     
+* @param args unused
+     */
     public static void main(String args[]) {
         DrawableTurtle turtle = new DrawableTurtle();
 
+   
+     drawSquare(turtle, 40);
+
         // draw the window
         turtle.draw();
-       drawRegularPolygon(turtle,5,60);
+        
+        drawRegularPolygon(turtle,5, 60);
+      
+  drawPersonalArt(turtle);
+       
         turtle.draw();
         
         
     }
 
 }
-
-   
